@@ -24,15 +24,16 @@ const highscore = document.querySelector(`.highscore`);
 // secret number
 const num = document.querySelector(`.number`);
 
-// css elements
 // body
-const body = document.querySelector(`body`).style;
+const body = document.querySelector(`body`);
 
 // secret number from 1 to 20
 const secretNum = Math.floor(Math.random() * 20) + 1;
 
 // storing the secretNum
 let newSecNum = secretNum;
+
+// logic
 
 // function to tell the user the  input is correct or not
 const changeMessage = () => {
@@ -41,7 +42,7 @@ const changeMessage = () => {
   // giving hint to the user that the number is correct or not
   if (!guessBox.value) {
     // when the number above 20
-    message.textContent = `No number has been guessed ! ...`;
+    message.textContent = `Please enter your number ...`;
   } else if (guessBox.value > newSecNum) {
     // when the number is higher than secret number
     message.textContent = `To High !! 😅`;
@@ -56,7 +57,7 @@ const changeMessage = () => {
         message.textContent = `you loose the game...`;
   
         // to update background
-        body.backgroundColor = `#f95959`;
+        body.style.backgroundColor = `#f95959`;
   
         again.style.color = `#f95959`;
   
@@ -78,7 +79,7 @@ const changeMessage = () => {
       message.textContent = `you loose the game...`;
 
       // to update background
-      body.backgroundColor = `#f95959`;
+      body.style.backgroundColor = `#f95959`;
 
       again.style.color = `#f95959`;
 
@@ -91,19 +92,15 @@ const changeMessage = () => {
     message.textContent = `Winner 🎊`;
 
     // to change colour
-    body.backgroundColor = `#60b347`;
+    body.style.backgroundColor = `#60b347`;
 
     // to update the highscore
     highscore.textContent = newScore;
 
     // to show the correct number
     num.textContent = newSecNum;
-  } /*else if (score.textContent == 0) {
-    message.textContent = `you loose the game...`;
-    // to update background
-    body.backgroundColor = `f95959`;
-  }*/
-};
+  }
+}
 
 // function to reset the values
 const resetValue = () => {
@@ -120,7 +117,7 @@ const resetValue = () => {
   guessBox.value = ``;
 
   // to reset baground colour
-  body.backgroundColor = `#a9bff6`;
+  body.style.backgroundColor = `#a9bff6`;
 
   // to reset secret number
   let secNum = Math.floor(Math.random() * 20) + 1;
@@ -133,7 +130,17 @@ const resetValue = () => {
   checkButton.style.color = `#9090f5`;
 
   num.style.color = `#9090f5`;
-};
+  
+  again.addEventListener(`mouseenter`,() => {
+    again.style.color = `#f95959`;
+    again.style.border = `4px solid #f95959`;
+  });
+}
+
+num.addEventListener(`mouseenter`,() => {
+  num.style.color = `#eee`;
+
+});
 
 // listening the events on web page
 // again button
