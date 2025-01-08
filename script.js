@@ -33,6 +33,8 @@ const secretNum = Math.floor(Math.random() * 20) + 1;
 // storing the secretNum
 let newSecNum = secretNum;
 
+alert(secretNum);
+
 // logic
 
 // function to tell the user the  input is correct or not
@@ -53,18 +55,18 @@ const changeMessage = () => {
     }
     // to update message
     if (score.textContent == 0) {
-        // to update message
-        message.textContent = `you loose the game...`;
-  
-        // to update background
-        body.style.backgroundColor = `#f95959`;
-  
-        again.style.color = `#f95959`;
-  
-        checkButton.style.color = `#f95959`;
-  
-        num.style.color = `#f95959`;
-      }
+      // to update message
+      message.textContent = `you loose the game...`;
+
+      // to update background
+      body.style.backgroundColor = `#f95959`;
+
+      again.style.color = `#f95959`;
+
+      checkButton.style.color = `#f95959`;
+
+      num.style.color = `#f95959`;
+    }
   } else if (guessBox.value < newSecNum) {
     // when the number is lower than the secret number
     message.textContent = `To Low !! ☹️`;
@@ -99,8 +101,35 @@ const changeMessage = () => {
 
     // to show the correct number
     num.textContent = newSecNum;
+
+    again.style.color = `#60b347`;
+
+    checkButton.style.color = `#60b347`;
+
+    num.style.color = `#60b347`;
+
+    again.addEventListener(`mouseover`, () => {
+      again.style.color = `#458930`;
+      // again.style.border = `4px solid #458930`;
+      again.style.boxShadow = `2px 2px 4px #458930`;
+    });
+
+    again.addEventListener(`mouseout`, () => {
+      again.style.color = `#60b347`;
+    });
+
+    checkButton.addEventListener(`mouseover`, () => {
+      checkButton.style.color = `#458930`;
+      // again.style.border = `4px solid #458930`;
+      checkButton.style.boxShadow = `2px 2px 4px #458930`;
+    });
+
+    checkButton.addEventListener(`mouseout`, () => {
+      checkButton.style.color = `#60b347`;
+    });
+
   }
-}
+};
 
 // function to reset the values
 const resetValue = () => {
@@ -130,17 +159,29 @@ const resetValue = () => {
   checkButton.style.color = `#9090f5`;
 
   num.style.color = `#9090f5`;
-  
-  again.addEventListener(`mouseenter`,() => {
-    again.style.color = `#f95959`;
-    again.style.border = `4px solid #f95959`;
+
+  again.addEventListener(`mouseenter`, () => {
+    again.style.color = `#9090f5`;
   });
-}
 
-num.addEventListener(`mouseenter`,() => {
-  num.style.color = `#eee`;
+  again.addEventListener(`mouseout`, () => {
+    again.style.color = `#60b347`;
+  });
 
-});
+  checkButton.addEventListener(`mouseover`, () => {
+    checkButton.style.color = `#9090f5`;
+    // again.style.border = `4px solid #458930`;
+    // checkButton.style.boxShadow = `2px 2px 4px #458930`;
+  });
+
+  num.addEventListener(`mouseenter`, () => {
+    num.style.color = `#9090f5`;
+  });
+
+  checkButton.addEventListener(`mouseout`, () => {
+    checkButton.style.color = `#60b347`;
+  });
+};
 
 // listening the events on web page
 // again button
