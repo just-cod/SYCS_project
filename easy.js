@@ -30,7 +30,6 @@ const body = document.querySelector(`body`);
 let secretNum = Math.floor(Math.random() * 20) + 1;
 
 let newSecNum = secretNum;
-alert(newSecNum);
 
 // logic
 
