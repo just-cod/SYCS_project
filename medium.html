@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess My Number</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Guess My Number !</h1>
+        <div class="number">?</div>
+        <p class="between">(Between 1 and 50)</p>
+        <div class="home">
+            <a href="./start.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e8eaed"  height="50px" width="50px">
+                <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 
+                320 240v480H520v-240h-80v240H160Zm320-350Z"/>
+            </svg>
+        </a>
+        </div>
+    </header>
+
+    <main>
+    <!-- guessing -->
+    <div class="left">
+        <button class="btn again"><b>Again !</b></button>
+        <input type="number" class="guess" />
+        <button class="btn check"><b>Check !</b></button>
+    </div>
+
+    <!-- score -->
+    <div class="right">
+        <p class="message">Start guessing...</p>
+        <p class="label-score">💯 Score: <p class="score">20</p></p>
+        <p class="label-highscore">🥇 Highscore: <p class="highscore">0</p></p>
+    </div>
+    </main>
+
+    <script src="./medium.js">
+        // const secretNum = Math.floor(Math.random() * 50) + 1;
+    </script>
+</body>
+</html>

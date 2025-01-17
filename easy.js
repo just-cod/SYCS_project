@@ -27,13 +27,10 @@ const num = document.querySelector(`.number`);
 // body
 const body = document.querySelector(`body`);
 
-// secret number from 1 to 20
-const secretNum = Math.floor(Math.random() * 20) + 1;
+let secretNum = Math.floor(Math.random() * 20) + 1;
 
-// storing the secretNum
 let newSecNum = secretNum;
-
-alert(secretNum);
+alert(newSecNum);
 
 // logic
 
