@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose Level</title>
+  </head>
+  <body>
+    <header>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 -960 960 960"
+        fill="#e8eaed"
+        height="50px"
+        width="50px"
+      >
+        <path
+          d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"
+        />
+      </svg>
+    </header>
+    <p>Choose A Level</p>
+    <div class="main">
+      <button name="easy" class="btn level" onclick="changeMainContent('Easy')">
+        Easy
+      </button>
+      <button
+        name="medium"
+        class="btn level"
+        onclick="changeMainContent('Medium')"
+      >
+        Medium
+      </button>
+      <button name="hard" class="btn level" onclick="changeMainContent('Hard')">
+        Hard
+      </button>
+    </div>
+    <main id="main-content">
+      <!-- Initial content of the main tag -->
+    </main>
+    <script>
+      export const setDifficulty = (level) => {
+        // Your existing setDifficulty function
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const mainContent = document.getElementById("main-content");
+
+        window.changeMainContent = (level) => {
+          mainContent.innerHTML = `<p>You have selected ${level} level.</p>`;
+        };
+      });
+    </script>
+  </body>
+</html>
