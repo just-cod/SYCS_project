@@ -13,7 +13,7 @@ const checkButton = document.querySelector(`.check`);
 const message = document.querySelector(`.message`);
 
 // score
-const score = document.querySelector(`.score`);
+const attempt = document.querySelector(`.attempt`);
 
 // highscore
 const highscore = document.querySelector(`.highscore`);
@@ -41,7 +41,7 @@ const setDifficulty = (lvl) => {
   if (lvl == `easy`) {
     levelSelected = true;
     guessBox.value = ``;
-    // attemps
+    // attempt
     score.textContent = 5;
     // hint message
     message.textContent = `Guess a number between 1 and 20`;
@@ -72,9 +72,12 @@ const setDifficulty = (lvl) => {
 const lvlEvent = () => {
   // to target the buttons difficulty atrribute
   level.forEach((level) => {
+    // event listener to select the level get difficulty value
     level.addEventListener("click", (event) => {
       const levels = event.target.getAttribute("difficulty");
+      // call the setDifficulty function and storing its return value
       let value = setDifficulty(levels);
+      // generate a random number based on the value
       secretNum = Math.floor(Math.random() * value) + 1;
     });
   });
@@ -82,8 +85,10 @@ const lvlEvent = () => {
 
 lvlEvent();
 
+// store the system generated number
 let newSecNum = secretNum;
 
+// check the user entered number 
 const check = () => {
   // level is not selected
   if (levelSelected == false) {
@@ -99,10 +104,11 @@ const check = () => {
       //user entered number is too high
       if (guessBox.value > secretNum) {
         message.textContent = `Too High`;
-        if (score.textContent > 0) {
-          score.textContent = score.textContent - 1;
+        // attempts deduction
+        if (attempt.textContent > 0) {
+          attempt.textContent = score.textContent - 1;
         }
-        if (score.textContent == 0) {
+        if (attempt.textContent == 0) {
           message.textContent = `😢You loose the game`;
           body.style.backgroundColor = `#f95959`;
           again.style.color = `#f95959`;
@@ -115,10 +121,10 @@ const check = () => {
       //user entered number is too low
       if (guessBox.value < secretNum) {
         message.textContent = `Too Low`;
-        if (score.textContent > 0) {
-          score.textContent = score.textContent - 1;
+        if (attempt.textContent > 0) {
+          attempt.textContent = attempt.textContent - 1;
         }
-        if (score.textContent == 0) {
+        if (attempt.textContent == 0) {
           message.textContent = `😢You loose the game`;
           body.style.backgroundColor = `#f95959`;
           again.style.color = `#f95959`;
@@ -134,7 +140,7 @@ const check = () => {
         body.style.backgroundColor = `#60b347`;
         num.textContent = secretNum;
         highscore.textContent = +5;
-        tempHighscore = highscore.textContent;
+        tempHighscore = highattempt.textContent;
         again.style.display = `block`;
       }
     }
@@ -185,6 +191,10 @@ const closeTxt = () => {
   close.textContent = `x`;
 };
 
+const closeText = () => {
+  close.textContent = `close`;
+};
+
 // show rules
 rule.addEventListener(`click`, showRules);
 
@@ -195,6 +205,4 @@ close.addEventListener(`click`, closeRules);
 close.addEventListener(`mouseover`, closeTxt);
 
 // close text
-close.addEventListener(`mouseout`, () => {
-  close.textContent = `close`;
-});
+close.addEventListener(`mouseout`, closeText);
