@@ -25,22 +25,8 @@ const num = document.querySelector(`.number`);
 const body = document.querySelector(`body`);
 
 // level buttons
-const level = document.querySelectorAll(`.level`);
+const level = document.querySelectorAll(`.btn.level`);
 
-// all buttons
-const buttons = document.querySelectorAll(`.btn`);
-
-// rules
-// btn
-const rule = document.querySelector(`.rules-btn`);
-// rule window
-const rulesBook = document.querySelector(`.rule-book`);
-// close btn
-const close = document.querySelector(`.close`);
-
-const showRulesBook = false;
-
-// let tempHighscore = 0;
 let tempHighscore = 0;
 
 // to let the user know the level is selected or not
@@ -56,7 +42,7 @@ const setDifficulty = (lvl) => {
     levelSelected = true;
     guessBox.value = ``;
     // attempt
-    attempt.textContent = 5;
+    score.textContent = 5;
     // hint message
     message.textContent = `Guess a number between 1 and 20`;
     // to change the difficulty to easy
@@ -65,7 +51,7 @@ const setDifficulty = (lvl) => {
     levelSelected = true;
     guessBox.value = ``;
     // attempts
-    attempt.textContent = 7;
+    score.textContent = 7;
     // hint message
     message.textContent = `Guess a number between 1 and 50`;
     // to change the difficulty to medium
@@ -74,7 +60,7 @@ const setDifficulty = (lvl) => {
     levelSelected = true;
     guessBox.value = ``;
     // attempts
-    attempt.textContent = 10;
+    score.textContent = 10;
     // hint message
     message.textContent = `Guess a number between 1 and 100`;
     // to change the difficulty to hard
@@ -82,18 +68,17 @@ const setDifficulty = (lvl) => {
   }
 };
 
+// to update the select by user level
 const lvlEvent = () => {
+  // to target the buttons difficulty atrribute
   level.forEach((level) => {
-    level.addEventListener(`click`, (event) => {
-      // to target the buttons difficulty attribute
-      let levels = event.target.getAttribute(`difficulty`);
-      // to set the difficulty level
+    // event listener to select the level get difficulty value
+    level.addEventListener("click", (event) => {
+      const levels = event.target.getAttribute("difficulty");
+      // call the setDifficulty function and storing its return value
       let value = setDifficulty(levels);
-      // to generate the random number
+      // generate a random number based on the value
       secretNum = Math.floor(Math.random() * value) + 1;
-      console.log(secretNum);
-
-      return value;
     });
   });
 };
@@ -103,7 +88,7 @@ lvlEvent();
 // store the system generated number
 let newSecNum = secretNum;
 
-// check the user entered number
+// check the user entered number 
 const check = () => {
   // level is not selected
   if (levelSelected == false) {
@@ -121,16 +106,16 @@ const check = () => {
         message.textContent = `Too High`;
         // attempts deduction
         if (attempt.textContent > 0) {
-          attempt.textContent = attempt.textContent - 1;
+          attempt.textContent = score.textContent - 1;
         }
         if (attempt.textContent == 0) {
-          message.textContent = `😢You lost the game`;
+          message.textContent = `😢You loose the game`;
           body.style.backgroundColor = `#f95959`;
+          again.style.color = `#f95959`;
+          checkButton.style.color = `#f95959`;
           num.style.color = `#f95959`;
           again.style.display = `block`;
-          buttons.forEach((button) => {
-            button.style.color = `#f95959`;
-          });
+          again.disabled = false;
         }
       }
       //user entered number is too low
@@ -140,15 +125,13 @@ const check = () => {
           attempt.textContent = attempt.textContent - 1;
         }
         if (attempt.textContent == 0) {
-          message.textContent = `😢You lost the game`;
+          message.textContent = `😢You loose the game`;
           body.style.backgroundColor = `#f95959`;
+          again.style.color = `#f95959`;
+          checkButton.style.color = `#f95959`;
+          level.style.color = `#f95959`;
           num.style.color = `#f95959`;
           again.style.display = `block`;
-          num.style.color = `#f95959`;
-          buttons.forEach((button) => {
-            button.style.color = `#f95959`;
-          });
-          level.disabled = true;
         }
       }
       //user entered number is correct
@@ -156,13 +139,9 @@ const check = () => {
         message.textContent = `🎉Correct Guess`;
         body.style.backgroundColor = `#60b347`;
         num.textContent = secretNum;
-        tempHighscore += 5;
-        highscore.textContent = +tempHighscore;
+        highscore.textContent = +5;
+        tempHighscore = highattempt.textContent;
         again.style.display = `block`;
-        num.style.color = `#60b347`;
-        buttons.forEach((button) => {
-          button.style.color = `#60b347`;
-        });
       }
     }
   }
@@ -181,16 +160,25 @@ const playAgain = () => {
   num.textContent = `?`;
   again.style.display = `none`;
   levelSelected = false;
+  again.style.color = `#a9bff6`;
   num.style.color = `#a9bff6`;
-  buttons.forEach((button) => {
-    button.style.color = `#a9bff6`;
-  });
-  leve.disabled = false;
+  checkButton.style.color = `#a9bff6`;
+  highscore.textContent = tempHighscore;
+  s;
 };
 
 again.addEventListener(`click`, playAgain);
 
 // rules
+// btn
+const rule = document.querySelector(`.rules-btn`);
+// rule window
+const rulesBook = document.querySelector(`.rule-book`);
+// close btn
+const close = document.querySelector(`.close`);
+
+const showRulesBook = false;
+
 const showRules = () => {
   rulesBook.style.display = `block`;
 };
