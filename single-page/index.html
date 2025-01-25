@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess My Number</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Guess My Number!</h1>
+        <div class="number">?</div>
+        <button class="btn back" title="Back">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="dodgerblue">
+                <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
+            </svg>
+        </button>
+
+        <!-- Rule Window -->
+        <button class="btn rules-btn" title="How to play">?</button>
+        <div class="rule-book">
+            <p class="close">close</p>
+            <div class="rules">
+                <h2 class="rule">How to Play</h2><br>
+                <p class="rule">Welcome to "Guess My Number!"</p><br>
+                <p class="rule">Here are the rules:</p><br>
+                <ol type="1">
+                    <li>Select a difficulty level: Easy, Medium or Hard.</li><br>
+                    <li>Guess the secret number within the range specified based on the difficulty level.</li><br>
+                    <li>You will recieve limited number of attempts based on the difficulty level you choose.</li><br>
+                    <li>If your guess is high or low, you will receive a hint.</li><br>
+                    <li>Try to guess the number before you run out of attempts!</li><br>
+                    <li>On each correct guess you will earn 5 points as score</li>
+                </ol><br>
+                <p class="rule">Good luck and have fun!</p>
+            </div>
+        </div>
+
+        <button class="btn again"><b>Restart</b></button>
+
+    </header>
+
+    <!-- level selection window -->
+    <p class="text">Choose A Level</p>
+    <div class="levels">
+        <button class="btn level" difficulty="easy">Easy</button>
+        <button class="btn level" difficulty="medium">Medium</button>
+        <button class="btn level" difficulty="hard">Hard</button>
+    </div>
+
+    <main>
+        <!-- start  window-->
+        <button class="btn play">Play</button>
+
+        <!-- guessing -->
+        <div class="left">
+            <input type="text" class="guess" />
+            <button class="btn check"><b>Check!</b></button>
+        </div>
+
+        <!-- score and hints -->
+        <div class="right">
+            <p class="message">Choose A level</p>
+            <p class="label-atempt">Attemps:
+            <p class="attempt">0</p>
+            </p><br>
+            <p class="label-score">🥇 Score:
+            <p class="score">0</p>
+            </p>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
